@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'generateTenOptions.js') }}"
+></script>
+
+<!--Conceptual Group to indicate purpose and audience of this site-->
+<div>
+    <div class="row"> 
+        <div class="home_purpose_title"> Step 1: 
+        </div>
+    </div>
+    <div class="home_purpose_text_important row">
+        The purpose of step 1 is to generate 10 preliminary meal options given your dietary needs and purpose.
+    </div>
+    </br>
+    
+    <form action="/generateTenOptions" method="POST" id="generate_ten_options">
+        <div class="row home_purpose_text_semi_important"> 
+            <div class="col-md-6 col-sm-12">
+                <span class="padding_right_text">The current purpose of my diet is to: </span>
+                </br>
+                <textarea id="diet_purpose" name="diet_purpose">
+                </textarea>
+            </div>
+        
+            <div class="col-md-6 col-sm-12">
+                <span class="padding_right_text">
+                    Using one adjective per box, the key things to note about my diet are: 
+                </span>
+                </br>
+                <span class="padding_right_text">
+                    For example: "vegetarian", "lactose-free" 
+                </span>
+                <input type="text" class="new_input diet_descript_input" id="diet_description_0"/>
+                <button class="btn btn_accent add_diet_restriction_btn" value="update" type="button">+</button> <br/>
+                <div id="add_diet_restriction"></div>
+            </div> 
+        </div>
+        <input
+            type="submit"
+            name="submit"
+            class="submit search btn btn_accent"
+            value="Submit"
+        />
+    </form>
+    <div class="row justify-content-center" id="loader"></div> 
+</div>
+{% endblock %}

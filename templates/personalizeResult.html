@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'personalizeResult.js') }}"
+></script>
+
+<script>
+    let item = {{item|tojson}}
+</script>
+
+<!--Conceptual Group to indicate purpose and audience of this site-->
+<div>
+    <div class="row"> 
+        <div class="home_purpose_title"> Personalized Recipe: 
+        </div>
+    </div>
+    {% for ele in item[1] %}
+        {% if "gredient" in ele or "struction" in ele or "irection" in ele %}
+            <div class="row home_purpose_text_semi_important">
+                <div class="col-12">
+                    {{ele}}
+                </div>
+            </div>
+        {% else %}
+            <div class="row home_purpose_text">
+                <div class="col-12">
+                    {{ele}}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+        </br>
+    <div class="row"> 
+        <div class="col-3">
+            <a href="/personalizeRecipe">
+                <button class="btn btn_accent back_to_personalize_recipe">Back</button>
+            </a>
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-3">
+            <button class="btn btn_accent next_to_grocery_list" id="{{item[0]}}" value={{item[1]}}>Next</button>
+        </div>
+    </div>
+    <div class="row justify-content-center overlayDiv" id="loader"></div>
+</div>
+{% endblock %}

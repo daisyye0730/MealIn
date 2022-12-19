@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+
+<script>
+  let item = {{item|tojson}}
+</script>
+
+<div>
+    {{data}}
+    <div class="row"> 
+        <div class="home_purpose_title"> {{item[0]}}: 
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="home_purpose_text"> {{item[1]}} 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+            <a href="/generateTenOptionsResult">
+                <button class="btn btn_accent description">Back</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

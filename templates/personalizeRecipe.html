@@ -1,0 +1,54 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'personalizeRecipe.js') }}"
+></script>
+
+<script>
+    let item = {{item|tojson}}
+  </script>
+
+<!--Conceptual Group to indicate purpose and audience of this site-->
+<div>
+    <div class="row"> 
+        <div class="home_purpose_title"> Step 2: 
+        </div>
+    </div>
+    <div class="home_purpose_text_important row">
+        Personalize your chosen meal by switching out an ingredient to your favorite food!
+    </div>
+    </br>
+
+    <div class="row">
+        <span class="home_purpose_text_semi_important">You Chose: {{item[0]}}</span>
+    </div>
+
+    <div class="row">
+        <span class="home_purpose_text">{{item[1]}}</span>
+    </div>
+</br>
+    <form action="/personalizeRecipe" method="POST" id="personalize_recipe">
+        <div class="row home_purpose_text_semi_important">
+            <p> In this meal, I want to swtich out
+                <input type="text" class="new_input switched_out_ingredient" id="switched_out"/> 
+            </p>
+        </div>
+        <div class="row home_purpose_text_semi_important"> 
+            <p>
+                <span>and substitute it with </span>
+                <input type="text" class="new_input substitute_ingredient" id="substitute"/> </br>
+            </p>
+        </div>
+        <div class="row home_purpose_text">
+            <input
+                type="submit"
+                name="submit"
+                class="submit search btn btn_accent"
+                value="Submit"
+            />
+        </div>
+    </form>
+    <div class="row justify-content-center" id="loader"></div> 
+</div>
+{% endblock %}

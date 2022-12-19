@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block content %}
+
+<script>
+    let item = {{item|tojson}}
+  </script>
+
+<!--Conceptual Group to indicate purpose and audience of this site-->
+<div>
+    <div class="row"> 
+        <div class="home_purpose_title"> Step 3: 
+        </div>
+    </div>
+    <div class="home_purpose_text_important row">
+        Get the grocery list and mark off those ingredients you already have!
+    </div>
+    </br>
+
+    {% for ele in item %}
+    <div class="row home_purpose_text">
+        <input type="checkbox" id="{{ele}}" name="{{ele}}" class="checkbox">
+        <label for="{{ele}}">{{ele}}</label>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

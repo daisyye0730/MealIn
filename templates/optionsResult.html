@@ -1,0 +1,48 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'optionsResult.js') }}"
+></script>
+
+<script>
+  let item = {{item|tojson}}
+</script>
+
+<div>
+    <div class="row justify-content-center overlayDiv" id="loader"></div>
+    <div class="row"> 
+        <div class="home_purpose_title"> Top 10 Meals are: 
+        </div>
+    </div>
+    {% for ele in item %}
+        {% if ele != '' and ele |length > 4 %}
+            <div class="row">
+                <div class="col-6">
+                    <span class="home_purpose_text">{{ele}}</span>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn_normal description" value="Description of {{ele}}">Description</button>
+                    <button class="btn btn_normal nutrition" value="Nutrition value of {{ele}}">Nutrition Value</button>
+                    <button class="btn btn_normal liked" value="{{ele}}">I want this!</button>
+                </div>
+            </div>
+            <hr>
+        {% endif %}
+    {% endfor %}
+    <div class="row">
+        <div class="col-4">
+            <a href="/generateTenOptions">
+                <button class="btn btn_accent description">Back</button>
+            </a>
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+            <a href="/regenerateTenOptionsResult">
+                <button class="btn btn_accent description">Regenerate</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
